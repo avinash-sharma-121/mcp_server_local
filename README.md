@@ -23,4 +23,5 @@ touch weather.py
 # how to start mcp server in terminal
 uv run mcp dev main.py 
 
-
+# when we are using see
+uv run  main.py
