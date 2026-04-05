@@ -15,6 +15,22 @@ from agent_tools.server_managment import (
     get_systemd_failed_units,
     check_file_permissions,
 )
+from agent_tools.kubernetes_tools import (
+    list_pods,
+    get_pod_details,
+    get_pod_logs,
+    delete_pod,
+    list_deployments,
+    get_deployment_details,
+    scale_deployment,
+    restart_deployment,
+    list_services,
+    get_service_details,
+    list_namespaces,
+    create_namespace,
+    list_configmaps,
+    get_cluster_info,
+)
 
 # Create an MCP server
 mcp = FastMCP(
@@ -43,6 +59,22 @@ mcp.tool()(get_installed_packages_count)
 mcp.tool()(check_disk_inode_usage)
 mcp.tool()(get_systemd_failed_units)
 mcp.tool()(check_file_permissions)
+
+# Add Kubernetes tools
+mcp.tool()(list_pods)
+mcp.tool()(get_pod_details)
+mcp.tool()(get_pod_logs)
+mcp.tool()(delete_pod)
+mcp.tool()(list_deployments)
+mcp.tool()(get_deployment_details)
+mcp.tool()(scale_deployment)
+mcp.tool()(restart_deployment)
+mcp.tool()(list_services)
+mcp.tool()(get_service_details)
+mcp.tool()(list_namespaces)
+mcp.tool()(create_namespace)
+mcp.tool()(list_configmaps)
+mcp.tool()(get_cluster_info)
 
 
 # Run the server
