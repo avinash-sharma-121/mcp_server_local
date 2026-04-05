@@ -1,9 +1,5 @@
 from typing import Any
 import httpx
-from mcp.server.fastmcp import FastMCP
-
-# Initialize FastMCP server
-mcp = FastMCP("weather")
 
 # Constants
 NWS_API_BASE = "https://api.weather.gov"
@@ -31,7 +27,6 @@ Description: {props.get("description", "No description available")}
 Instructions: {props.get("instruction", "No specific instructions provided")}
 """
 
-@mcp.tool()
 async def get_alerts(state: str) -> str:
     """Get weather alerts for a US state.
 
@@ -50,7 +45,6 @@ async def get_alerts(state: str) -> str:
     alerts = [format_alert(feature) for feature in data["features"]]
     return "\n---\n".join(alerts)
 
-@mcp.tool()
 async def get_forecast(latitude: float, longitude: float) -> str:
     """Get weather forecast for a location.
 

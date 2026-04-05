@@ -2,14 +2,18 @@ from mcp.server.fastmcp import FastMCP
 from weather import get_alerts, get_forecast
 from add import add_numbers
 
-from weather import mcp
-from add import mcp_add
+# Create single MCP server with both tool sets
+mcp = FastMCP("multi-tool-server")
 
+# Add weather tools
+mcp.tool()(get_alerts)
+mcp.tool()(get_forecast)
+
+# Add add tool
+mcp.tool()(add_numbers)
 
 def main():
-    #mcp.run(transport="stdio")
-    mcp_add.run(transport="stdio")
-
+    mcp.run(transport="stdio")
 
 if __name__ == "__main__":
     main()
