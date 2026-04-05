@@ -1,9 +1,20 @@
 from mcp.server.fastmcp import FastMCP
 from agent_tools.weather import get_alerts, get_forecast
 from agent_tools.add import add_numbers
-
-# Create single MCP server with both tool sets
-mcp = FastMCP("")
+from agent_tools.server_managment import (
+    get_system_info,
+    get_disk_usage,
+    get_memory_usage,
+    get_cpu_usage,
+    get_top_processes,
+    check_service_status,
+    get_network_info,
+    check_open_ports,
+    get_installed_packages_count,
+    check_disk_inode_usage,
+    get_systemd_failed_units,
+    check_file_permissions,
+)
 
 # Create an MCP server
 mcp = FastMCP(
@@ -18,6 +29,20 @@ mcp.tool()(get_forecast)
 
 # Add add tool
 mcp.tool()(add_numbers)
+
+# Add server management tools
+mcp.tool()(get_system_info)
+mcp.tool()(get_disk_usage)
+mcp.tool()(get_memory_usage)
+mcp.tool()(get_cpu_usage)
+mcp.tool()(get_top_processes)
+mcp.tool()(check_service_status)
+mcp.tool()(get_network_info)
+mcp.tool()(check_open_ports)
+mcp.tool()(get_installed_packages_count)
+mcp.tool()(check_disk_inode_usage)
+mcp.tool()(get_systemd_failed_units)
+mcp.tool()(check_file_permissions)
 
 
 # Run the server
