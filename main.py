@@ -1,6 +1,7 @@
 from mcp.server.fastmcp import FastMCP
 from agent_tools.weather import get_alerts, get_forecast
 from agent_tools.add import add_numbers
+from agent_tools.about_me import about_developer
 from agent_tools.server_managment import (
     get_system_info,
     get_disk_usage,
@@ -76,6 +77,8 @@ mcp.tool()(create_namespace)
 mcp.tool()(list_configmaps)
 mcp.tool()(get_cluster_info)
 
+# Add about me tool
+mcp.tool()(about_developer)
 
 # Run the server
 if __name__ == "__main__":
